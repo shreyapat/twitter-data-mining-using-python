@@ -40,6 +40,7 @@ search.search_tweets_iterable(tso)
 queries = 0
 puts(u"Fetching results:")
 with indent(3):
+    try:
         for tweet in search:
             if search.get_statistics()['queries'] != queries:
                 puts('Fetched {0} tweets'.format(search.get_statistics()['tweets']))
@@ -50,11 +51,12 @@ with indent(3):
             for key in tweet_fields:
                 data.append(tweet[key])
             sheet.append(data)
+    except TwitterSearchException as e:  # take care of all those ugly errors if there are some
+        print(e)
 
 
-
-            filename = u'twitter-search-%s.csv' % (' '.join(SEARCH_SPEC.all))
-            with open(filename, 'wb') as f:
-                f.write(sheet.csv)
+filename = u'twitter-search-%s.csv' % (' '.join(SEARCH_SPEC.all))
+with open(filename, 'wb') as f:
+    f.write(sheet.csv)
 
 puts(u"Saved {0} results to {1}".format(sheet.height, filename))
