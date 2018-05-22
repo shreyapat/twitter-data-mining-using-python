@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-#users TwitterSearch API
+#uses TwitterSearch API
 
 from clint.arguments import Args
 from clint.textui import puts, indent
