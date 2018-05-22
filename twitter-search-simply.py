@@ -1,0 +1,13 @@
+#using TwitterSearch API
+#https://github.com/ckoepp/TwitterSearch
+
+import TwitterSearch
+from TwitterSearch import *
+
+
+tso = TwitterSearchOrder()
+tso.set_keywords(['apple']) #searches for Apple
+
+ts = TwitterSearch( consumer_key = '', consumer_secret = '', access_token = '', access_token_secret = '' )
+
+for tweet in ts.search_tweets_iterable(tso): print('@%s tweeted: %s' % (tweet['user']['screen_name'], tweet['text']))
