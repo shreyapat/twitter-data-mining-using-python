@@ -1,3 +1,5 @@
 # twitter-data-mining-using-python
 
-Python scripts for different tasks pertaining to mining Tweets.
+Python scripts for different tasks pertaining to mining Twitter data.
+
+
